@@ -487,7 +487,7 @@ func (u *UbuntuOS) InstallKubeEdge() error {
 	}
 
 SKIPDOWNLOADAND:
-	untarFileAndMove := fmt.Sprintf("cd %s && tar -C %s -xvzf %s && cp %skubeedge/edge/%s %s/.", KubeEdgePath, KubeEdgePath, filename, KubeEdgePath, KubeEdgeBinaryName, KubeEdgeUsrBinPath)
+	untarFileAndMove := fmt.Sprintf("cd %s && tar -C %s -xvzf %s && mv %s kubeedge && cp %skubeedge/edge/%s %s/.", KubeEdgePath, KubeEdgePath, filename, strings.Trim(filename, ".tar.gz"), KubeEdgePath, KubeEdgeBinaryName, KubeEdgeUsrBinPath)
 	stdout, err := runCommandWithShell(untarFileAndMove)
 	if err != nil {
 		return err
